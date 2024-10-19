@@ -1,10 +1,12 @@
-import React from 'react';
-import { FaSearch, FaUser, FaHeart, FaShoppingBag } from 'react-icons/fa'; // Icons
+import React, { useState } from 'react';
+import { FaSearch, FaUser, FaHeart, FaShoppingBag, FaBars, FaTimes } from 'react-icons/fa';
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <header className="bg-white border-b border-gray-200">
-      {/* Top section with Help, Orders, Sign Up, Log In */}
+    <header className="bg-white border-b border-gray-200 relative">
+      {/* Top section */}
       <div className="bg-gray-50 py-1 text-xs text-gray-500">
         <div className="container mx-auto flex justify-end space-x-6">
           <a href="/" className="hover:underline">Help</a>
@@ -14,29 +16,46 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Main header with logo, navigation, and icons */}
+      {/* Main Header */}
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        {/* Brand Name with spacing */}
         <div className="flex items-center">
-          <img
-            src="/path-to-adidas-logo/adidas-logo.png"
-            alt="Adidas Logo"
-            className="h-8 w-auto mr-8"
+          <span className="text-3xl font-bold uppercase tracking-wider text-gray-900 mr-10">Adidas</span> 
+        </div>
+
+        {/* Hamburger Icon for Mobile */}
+        <div className="md:hidden flex items-center">
+          <FaBars
+            className="text-gray-600 text-2xl cursor-pointer"
+            onClick={() => setMenuOpen(true)}
           />
         </div>
 
-        <nav>
-          <ul className="flex space-x-6 text-sm font-semibold tracking-wide uppercase">
-            <li><a href="/" className="hover:text-gray-600">Men</a></li>
-            <li><a href="/" className="hover:text-gray-600">Women</a></li>
-            <li><a href="/" className="hover:text-gray-600">Kids</a></li>
-            <li><a href="/" className="hover:text-gray-600">Sports</a></li>
-            <li><a href="/" className="hover:text-gray-600">Lifestyle</a></li>
-            <li><a href="/" className="hover:text-gray-600">Outlet</a></li>
-            <li><a href="/" className="text-red-600 font-bold">Festive Sale - Extra 20% Off</a></li>
+        {/* Navigation Menu */}
+        <nav
+          className={`${
+            menuOpen ? 'block' : 'hidden'
+          } absolute top-0 left-0 w-full h-screen bg-white z-50 md:static md:h-auto md:bg-transparent md:flex md:space-x-6 md:items-center text-sm font-semibold uppercase transition-all duration-300 ease-in-out`}
+        >
+          {/* Close Button in Mobile Menu */}
+          {menuOpen && (
+            <div className="absolute top-4 right-4 cursor-pointer md:hidden" onClick={() => setMenuOpen(false)}>
+              <FaTimes className="text-gray-600 text-2xl" />
+            </div>
+          )}
+          <ul className="flex flex-col items-center space-y-6 mt-16 md:mt-0 md:flex-row md:space-y-0 md:space-x-6">
+            <li><a href="/" className="hover:text-gray-600" onClick={() => setMenuOpen(false)}>Men</a></li>
+            <li><a href="/" className="hover:text-gray-600" onClick={() => setMenuOpen(false)}>Women</a></li>
+            <li><a href="/" className="hover:text-gray-600" onClick={() => setMenuOpen(false)}>Kids</a></li>
+            <li><a href="/" className="hover:text-gray-600" onClick={() => setMenuOpen(false)}>Sports</a></li>
+            <li><a href="/" className="hover:text-gray-600" onClick={() => setMenuOpen(false)}>Lifestyle</a></li>
+            <li><a href="/" className="hover:text-gray-600" onClick={() => setMenuOpen(false)}>Outlet</a></li>
+            <li><a href="/" className="text-red-600 font-bold" onClick={() => setMenuOpen(false)}>Festive Sale - Extra 20% Off</a></li>
           </ul>
         </nav>
 
-        <div className="flex items-center space-x-6">
+        {/* Search and Icons */}
+        <div className="hidden md:flex items-center space-x-6">
           <div className="flex items-center border border-gray-300 rounded-md px-3 py-1">
             <input
               type="text"
@@ -46,13 +65,8 @@ const Header = () => {
             <FaSearch className="text-gray-600" />
           </div>
 
-          <div className="relative">
-            <FaUser className="text-gray-600 text-xl" />
-            <span className="absolute top-0 right-0 bg-yellow-500 text-white text-xs rounded-full px-1">1</span>
-          </div>
-
+          <FaUser className="text-gray-600 text-xl" />
           <FaHeart className="text-gray-600 text-xl" />
-
           <FaShoppingBag className="text-gray-600 text-xl" />
         </div>
       </div>
