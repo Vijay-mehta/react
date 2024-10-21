@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 const products = [
   { id: 1, name: 'Product 1', price: 29.99, description: 'This is Product 1.' },
   { id: 2, name: 'Product 2', price: 39.99, description: 'This is Product 2.' },
-  // Add more products as needed
 ];
 
 const ProductDetail = ({ addToCart }) => {

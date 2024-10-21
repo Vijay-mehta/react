@@ -43,7 +43,6 @@ const Home = () => {
     setModalOpen(false);
   };
 
-  // Filter products based on selected filters
   const filteredProducts = products.filter(product => 
     !Object.values(selectedFilters).some(selected => selected) ? true : selectedFilters[product.category]
   );
