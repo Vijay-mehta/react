@@ -6,7 +6,6 @@ const Header = () => {
 
   return (
     <header className="bg-white border-b border-gray-200 relative">
-      {/* Top section */}
       <div className="bg-gray-50 py-1 text-xs text-gray-500">
         <div className="container mx-auto flex justify-end space-x-6">
           <a href="/" className="hover:underline">Help</a>
@@ -16,14 +15,11 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Main Header */}
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        {/* Brand Name with spacing */}
         <div className="flex items-center">
           <span className="text-3xl font-bold uppercase tracking-wider text-gray-900 mr-10">Adidas</span> 
         </div>
 
-        {/* Hamburger Icon for Mobile */}
         <div className="md:hidden flex items-center">
           <FaBars
             className="text-gray-600 text-2xl cursor-pointer"
@@ -31,13 +27,11 @@ const Header = () => {
           />
         </div>
 
-        {/* Navigation Menu */}
         <nav
           className={`${
             menuOpen ? 'block' : 'hidden'
           } absolute top-0 left-0 w-full h-screen bg-white z-50 md:static md:h-auto md:bg-transparent md:flex md:space-x-6 md:items-center text-sm font-semibold uppercase transition-all duration-300 ease-in-out`}
         >
-          {/* Close Button in Mobile Menu */}
           {menuOpen && (
             <div className="absolute top-4 right-4 cursor-pointer md:hidden" onClick={() => setMenuOpen(false)}>
               <FaTimes className="text-gray-600 text-2xl" />
@@ -54,7 +48,6 @@ const Header = () => {
           </ul>
         </nav>
 
-        {/* Search and Icons */}
         <div className="hidden md:flex items-center space-x-6">
           <div className="flex items-center border border-gray-300 rounded-md px-3 py-1">
             <input
